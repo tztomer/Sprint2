@@ -1,7 +1,7 @@
 "use strict";
 const DB_KEY = "savedMemesDB";
 
-let gStickers = ["😂", "😴", "🤡", "💩"];
+let gStickers = ["😂", "😴", "🤡", "💩", "😡", "🤬"];
 
 let gMeme = {
   selectedImgId: 1,
@@ -111,11 +111,11 @@ function setTextAlignment(val) {
   // if (!gMeme.selectedLineIdx >= 0) return
   const line = gMeme.lines[gMeme.selectedLineIdx];
   if (val === "end") {
-    line.pos.x = gElCanvas.width - gElCanvas.width / 3;
+    line.pos.x = gCanvas.width - gCanvas.width / 3;
   } else if (val === "start") {
-    line.pos.x = gElCanvas.width / 3;
+    line.pos.x = gCanvas.width / 3;
   } else if (val === "center") {
-    line.pos.x = gElCanvas.width / 2;
+    line.pos.x = gCanvas.width / 2;
   }
 }
 
@@ -166,8 +166,8 @@ function addNewLine(txt = "New Sample") {
     fillColor: "white",
     strokeColor: "black",
     pos: {
-      x: gElCanvas.width / 2,
-      y: gElCanvas.height / 2,
+      x: gCanvas.width / 2,
+      y: gCanvas.height / 2,
     },
     fontfamily: "impact",
     isSelected: true,

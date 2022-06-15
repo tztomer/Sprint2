@@ -9,6 +9,7 @@ function initEditor(image) {
   addListeners();
   resizeCanvas();
   renderMeme(image);
+  renderStickers();
 }
 
 // Creates canvas and access to its context
@@ -31,7 +32,7 @@ function initLinePositions() {
 
 function resizeCanvas() {
   const elContainer = document.querySelector(".canvas-container");
-  console.log("elContainer", elContainer);
+  // console.log("elContainer", elContainer);
   gCanvas.width = elContainer.offsetWidth;
   gCanvas.height = elContainer.offsetHeight;
 }
@@ -57,4 +58,86 @@ function onSave() {
   saveMemeToStorage(meme);
   renderSaved();
   moveToPage("saved");
+}
+
+// Renders text input from text box
+
+function onSetText(text) {
+  setLineText(text);
+  renderMeme(gCurrImg);
+}
+
+function onSwitchLine() {
+  updateSelectedLine();
+  renderMeme(gCurrImg);
+}
+
+function onChangeTextSize(val) {
+  setTextSize(val);
+  renderMeme(gCurrImg);
+}
+
+function onChangeTextAlignment(val) {
+  setTextAlignment(val);
+  renderMeme(gCurrImg);
+}
+
+function onAddLine() {
+  addNewLine();
+  renderMeme(gCurrImg);
+}
+
+function onDeleteLine() {
+  deleteLine();
+  renderMeme(gCurrImg);
+}
+
+function onChangeStrokeColor(val) {
+  changeStrokeColor(val);
+  gCtx.strokeStyle = val;
+  renderMeme(gCurrImg);
+}
+
+function onChangeFillColor(val) {
+  changeFillColor(val);
+  renderMeme(gCurrImg);
+}
+
+function onChangeTextFont(val) {
+  changeTextFont(val);
+  renderMeme(gCurrImg);
+}
+
+function onDownload(ellink) {
+  resetSelectedLine();
+  renderMeme(gCurrImg);
+  downloadMeme(ellink);
+}
+
+function onShare(ellink) {
+  uploadImg(ellink);
+}
+
+function onSave() {
+  resetSelectedLine();
+  renderMeme(gCurrImg);
+  const meme = gCanvas.toDataURL("image/jpeg");
+  saveMemeToStorage(meme);
+  renderSaved();
+  moveToPage("saved");
+}
+
+// Renders stickers
+
+function renderStickers() {
+  const stickers = getStickers();
+  const strHTMLs = stickers.map(sticker => {
+    return `<button class="sticker" onclick="onChooseSticker('${sticker}')">${sticker}</button>`;
+  });
+  document.querySelector(".stickers-container").innerHTML = strHTMLs.join("");
+}
+
+function onChooseSticker(sticker) {
+  addNewLine(sticker);
+  renderMeme(gCurrImg);
 }

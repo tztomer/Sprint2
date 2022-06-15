@@ -1,8 +1,7 @@
-section.images-container {
+.images-container {
   display: inline-grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
-  max-width: 600px;
   gap: 10.5px;
   padding: 13px 0px;
 }

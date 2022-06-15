@@ -4,6 +4,110 @@
 }
 
 .canvas-container {
-  width: 500px;
-  height: 500px;
+  width: 275px;
+  height: 275px;
 }
+
+.photo-editor {
+  padding: 13px 0px;
+}
+
+.edit-panel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 186px;
+  height: auto;
+  gap: 10px;
+  justify-content: center;
+}
+.photo-editor-inner-wrapper {
+  gap: 90px;
+  align-items: flex-start;
+}
+input.text-content-edit {
+  flex: 1 1 100%;
+  border: none;
+  border-radius: 6px;
+  height: 30px;
+}
+
+.lines-edit {
+  flex: 1 1 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+.edit-panel button {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background-color: var(--white);
+  border: none;
+}
+
+.text-edit {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  width: 30px;
+  height: 30px;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 6px;
+}
+i.letter-color {
+  position: relative;
+}
+.fa-a::before {
+  content: "\41";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  stroke-linecap: butt;
+  height: auto;
+  transform: translate(9px, 7px);
+}
+
+.fa-palette::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  stroke-linecap: butt;
+  height: auto;
+  transform: translate(9px, 7px);
+}
+
+select.font-select {
+  border: none;
+  padding: 0;
+  margin: 0px;
+  height: 30px;
+  flex: 0 0 59%;
+  border-radius: 6px;
+}
+
+.dsp-btns-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+/* 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+} */

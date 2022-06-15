@@ -1,0 +1,43 @@
+@media (max-width: 623px) {
+  .images-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .images-container img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    transition: all 100ms ease-out;
+  }
+}
+@media (max-width: 500px) {
+  #nav-icon1 {
+    display: block;
+  }
+  nav.main-nav {
+    /* position: absolute; */
+    height: 280px;
+    background-color: var(--orange);
+    display: none;
+    /* top: 32px;
+    z-index: 2; */
+  }
+  .inner-main-nav {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+  .categories {
+    flex-direction: column;
+  }
+  .left-top-bar {
+    display: flex;
+  }
+  header,
+  nav {
+    position: fixed;
+  }
+  header {
+    z-index: 4;
+    width: 100%;
+  }
+}

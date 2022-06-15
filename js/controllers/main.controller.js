@@ -12,6 +12,20 @@ function init() {
   renderKeywords();
 }
 
+function hmbOpen(ele) {
+  // console.log(ele.classList.toggle("open"));
+  let open = ele.classList.toggle("open");
+  let menu = document.querySelector("nav.main-nav ");
+  console.log(open);
+
+  if (open) {
+    menu.style.display = "block";
+    console.log("im here");
+  } else {
+    menu.style.display = "none";
+  }
+}
+
 function onFilterImgs(val) {
   console.log("val", val);
   setFilterImgs(val);
