@@ -123,7 +123,7 @@ function getImages() {
         }
       });
     });
-    // console.log(filteredImgs);
+    console.log(filteredImgs);
     return filteredImgs;
   }
   return gImgs;

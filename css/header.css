@@ -6,6 +6,7 @@ header .top-strip {
 nav.main-nav {
   height: 53px;
   background: var(--white);
+  width: 100%;
 }
 
 .top-strip img.logo {

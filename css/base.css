@@ -14,8 +14,10 @@ body {
 }
 main {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  flex-direction: column;
+  background-color: var(--gray);
 }
 img,
 a,
@@ -23,7 +25,8 @@ button {
   cursor: pointer;
 }
 
-header {
+header,
+nav {
   font-family: "Montserrat", sans-serif;
 }
 

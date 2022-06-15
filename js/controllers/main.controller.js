@@ -2,9 +2,11 @@
 let gCurrImg;
 let gIsClicked = false;
 const elImagesContainer = document.querySelector(".images-container");
-const pages = ["gallery", "editor", "saved", "about", "about-info"];
-const gTouchEvs = ["touchstart", "touchmove", "touchend"];
+console.log(elImagesContainer);
 
+const pages = ["gallery", "photo-editor"];
+// const pages = ["gallery", "photo-editor", "saved", "about", "about-info"];
+const gTouchEvs = ["touchstart", "touchmove", "touchend"];
 function init() {
   renderGallery();
   renderKeywords();
@@ -18,12 +20,36 @@ function onFilterImgs(val) {
 
 function renderGallery() {
   const images = getImages();
-  let strHTML = ``;
+  console.log(images);
+  // let strHTML = ``;
   let imgHTML = images.map(img => {
-    return `<image src="./images/${img.id}.jpg"></image>`;
+    return `<image onclick="onSelectImage(${img.id})" src="./images/${img.id}.jpg"></image>`;
   });
 
   elImagesContainer.innerHTML = imgHTML.join("");
+}
+
+// Paging
+
+// Selecting an image from the gallery
+function onSelectImage(id) {
+  setSelectedImg(id);
+  const currImg = getSelectedImg();
+  const img = new Image();
+  img.src = currImg.url;
+  img.onload = () => {
+    gCurrImg = img;
+    initEditor(img);
+  };
+  moveToPage("photo-editor");
+}
+
+// Moves between pages
+function moveToPage(targetPage) {
+  pages.forEach(page => {
+    document.querySelector(`.${page}`).classList.add("hide");
+  });
+  document.querySelector(`.${targetPage}`).classList.remove("hide");
 }
 
 // Filters the images by search/keywords

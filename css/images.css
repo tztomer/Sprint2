@@ -4,6 +4,7 @@ section.images-container {
   grid-template-rows: auto;
   max-width: 600px;
   gap: 10.5px;
+  padding: 13px 0px;
 }
 .images-container img {
   object-fit: cover;
