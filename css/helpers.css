@@ -1,0 +1,15 @@
+.flex {
+  display: flex;
+}
+
+.flex-just-cent {
+  justify-content: center;
+}
+
+.flex-align-cent {
+  align-items: center;
+}
+
+.flex-space-bet {
+  justify-content: space-between;
+}

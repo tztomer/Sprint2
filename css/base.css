@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: Impact;
+  height: 100vh;
+  width: 100vw;
+  overflow: scroll;
+  /* background-color: red; */
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+img,
+a,
+button {
+  cursor: pointer;
+}
+
+header {
+  font-family: "Montserrat", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
