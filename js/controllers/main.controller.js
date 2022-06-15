@@ -20,7 +20,7 @@ function renderGallery() {
   const images = getImages();
   let strHTML = ``;
   let imgHTML = images.map(img => {
-    return `<image src="/images/${img.id}.jpg"></image>`;
+    return `<image src="./images/${img.id}.jpg"></image>`;
   });
 
   elImagesContainer.innerHTML = imgHTML.join("");
