@@ -1,4 +1,23 @@
+@media (max-width: 901px) {
+  .photo-editor-inner-wrapper.flex {
+    flex-direction: column;
+  }
+  .canvas-container {
+    width: 417px;
+    height: 400px;
+    cursor: grab;
+  }
+}
+
 @media (max-width: 623px) {
+  .photo-editor {
+    height: 100%;
+  }
+  .canvas-container {
+    width: 417px;
+    height: 400px;
+    cursor: grab;
+  }
   .images-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -6,7 +25,7 @@
   .images-container img {
     object-fit: cover;
     width: 100%;
-    height: auto;
+    height: 170px;
     transition: all 100ms ease-out;
   }
 }
@@ -14,20 +33,27 @@
   #hamburger-icon {
     display: block;
   }
+
+  .categories a {
+    background: var(--white);
+    padding: 5px 10px;
+  }
   nav.main-nav {
-    /* position: absolute; */
-    height: 280px;
+    height: 293px;
     background-color: var(--orange);
     display: none;
-    /* top: 32px;
-    z-index: 2; */
   }
   .inner-main-nav {
     flex-direction: column-reverse;
     justify-content: center;
+    gap: 27px;
   }
   .categories {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 260px;
+    justify-content: center;
+    gap: 14px;
   }
   .left-top-bar {
     display: flex;
@@ -49,5 +75,15 @@
     justify-content: inherit;
     align-items: center;
     gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .canvas-container {
+    max-width: 334px;
+    max-height: 320px;
+
+    width: 100%;
+    padding: 20px;
   }
 }

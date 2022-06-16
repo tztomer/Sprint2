@@ -2,6 +2,7 @@
 let gCurrImg;
 let gIsClicked = false;
 const elImagesContainer = document.querySelector(".images-container");
+const elHumbuggerMenu = document.querySelector("#hamburger-icon");
 console.log(elImagesContainer);
 
 const pages = ["gallery", "photo-editor", "saved"];
@@ -16,7 +17,9 @@ function hamburger(ele) {
   // console.log(ele.classList.toggle("open"));
   let open = ele.classList.toggle("open");
   let menu = document.querySelector("nav.main-nav ");
+
   console.log(open);
+  console.log(ele);
 
   if (open) {
     menu.style.display = "block";
@@ -24,6 +27,7 @@ function hamburger(ele) {
   } else {
     menu.style.display = "none";
   }
+  // return ele;
 }
 
 function onFilterImgs(val) {
@@ -62,7 +66,13 @@ function onSelectImage(id) {
 function moveToPage(targetPage) {
   pages.forEach(page => {
     document.querySelector(`.${page}`).classList.add("hide");
+    if (page === "photo-editor") {
+      elHumbuggerMenu.style.display = "none";
+    } else if (targetPage === "gallery") {
+      elHumbuggerMenu.style.display = "block";
+    }
   });
+
   document.querySelector(`.${targetPage}`).classList.remove("hide");
 }
 

@@ -158,7 +158,7 @@ function addNewLine(txt = "Write hello world , add to cv 7 years experienced") {
   resetSelectedLine();
   const line = {
     txt: txt,
-    size: 70,
+    size: 40,
     align: "center",
     fillColor: "white",
     strokeColor: "black",
@@ -173,8 +173,6 @@ function addNewLine(txt = "Write hello world , add to cv 7 years experienced") {
   gMeme.selectedLineIdx = gMeme.lines.length - 1;
   markLine(gMeme.lines[gMeme.selectedLineIdx]);
 }
-
-// Deletes line
 
 function deleteLine() {
   const selectedLineIdx = gMeme.selectedLineIdx;
