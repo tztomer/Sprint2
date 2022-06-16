@@ -4,7 +4,7 @@ let gIsClicked = false;
 const elImagesContainer = document.querySelector(".images-container");
 console.log(elImagesContainer);
 
-const pages = ["gallery", "photo-editor"];
+const pages = ["gallery", "photo-editor", "saved"];
 // const pages = ["gallery", "photo-editor", "saved", "about", "about-info"];
 const gTouchEvs = ["touchstart", "touchmove", "touchend"];
 function init() {
@@ -12,7 +12,7 @@ function init() {
   renderKeywords();
 }
 
-function hmbOpen(ele) {
+function hamburger(ele) {
   // console.log(ele.classList.toggle("open"));
   let open = ele.classList.toggle("open");
   let menu = document.querySelector("nav.main-nav ");
@@ -66,9 +66,6 @@ function moveToPage(targetPage) {
   document.querySelector(`.${targetPage}`).classList.remove("hide");
 }
 
-// Filters the images by search/keywords
-
-// Renders keywords
 function renderKeywords() {
   let keywords = getKeywords();
   let strHTMLs = '<a data-word="all" onclick="onFilterImgs(this.dataset.word)" style="font-size: 18px;">All</a>';

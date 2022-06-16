@@ -1,5 +1,5 @@
 "use strict";
-const DB_KEY = "savedMemesDB";
+const DB = "savedDB";
 
 let gStickers = ["😂", "😴", "🤡", "💩", "😡", "🤬"];
 
@@ -13,11 +13,11 @@ let gMeme = {
         y: 0,
       },
       txt: "Not sure if im good at programming or good at googling",
-      size: 40,
+      size: 20,
       align: "center",
       fillColor: "white",
       strokeColor: "black",
-      isSelected: true,
+      isSelected: false,
       fontfamily: "impact",
     },
     {
@@ -26,7 +26,7 @@ let gMeme = {
         y: 0,
       },
       txt: "One does not simply write js",
-      size: 40,
+      size: 20,
       align: "center",
       fillColor: "white",
       strokeColor: "black",
@@ -57,6 +57,7 @@ function moveLine(diffX, diffY) {
 function isLineClicked(clickedPos) {
   const clickedLine = gMeme.lines.find(line => {
     if (Math.sqrt((clickedPos.x - line.pos.x) ** 2 + (clickedPos.y - line.pos.y) ** 2) <= gCtx.measureText(line.txt).width / 2) {
+      console.log("line", line);
       return line;
     }
   });
@@ -103,12 +104,10 @@ function resetSelectedLine() {
 }
 
 function setTextSize(val) {
-  // if (!gMeme.selectedLineIdx >= 0) return
   gMeme.lines[gMeme.selectedLineIdx].size += val;
 }
 
 function setTextAlignment(val) {
-  // if (!gMeme.selectedLineIdx >= 0) return
   const line = gMeme.lines[gMeme.selectedLineIdx];
   if (val === "end") {
     line.pos.x = gCanvas.width - gCanvas.width / 3;
@@ -131,7 +130,7 @@ function changeFillColor(val) {
 
 function changeTextFont(val) {
   // if (!gMeme.selectedLineIdx >= 0) return
-  gMeme.lines[gMeme.selectedLineIdx].fontfamily = val;
+  gMeme.lines[gMeme.selectedLineIdx].fontfamily = `${val}, sans-serif `;
 }
 
 // Makes the text line
@@ -151,17 +150,15 @@ function markLine(line) {
   if (!line) return;
   const lineWidth = gCtx.measureText(line.txt).width + line.size;
   const lineHeight = line.size + 30;
-  gCtx.strokeStyle = "yellow";
-  gCtx.strokeRect(line.pos.x - lineWidth / 2 - 10, line.pos.y - lineHeight / 2, lineWidth + 20, lineHeight);
+  gCtx.strokeStyle = "orange";
+  gCtx.strokeRect(line.pos.x - lineWidth / 2 - 20, line.pos.y - lineHeight / 2, lineWidth + 20, lineHeight);
 }
 
-// Adds line to the center
-
-function addNewLine(txt = "New Sample") {
+function addNewLine(txt = "Write hello world , add to cv 7 years experienced") {
   resetSelectedLine();
   const line = {
     txt: txt,
-    size: 40,
+    size: 70,
     align: "center",
     fillColor: "white",
     strokeColor: "black",
@@ -192,18 +189,18 @@ function deleteLine() {
 }
 
 function saveMemeToStorage(meme) {
-  let savedMemes = loadFromStorage(DB_KEY);
+  let savedMemes = loadFromStorage(DB);
   if (!savedMemes || savedMemes === null) {
     savedMemes = [meme];
-    saveToStorage(DB_KEY, savedMemes);
+    saveToStorage(DB, savedMemes);
     return;
   }
   savedMemes.push(meme);
-  saveToStorage(DB_KEY, savedMemes);
+  saveToStorage(DB, savedMemes);
 }
 
 function getSavedMemes() {
-  return loadFromStorage(DB_KEY);
+  return loadFromStorage(DB);
 }
 
 function getStickers() {

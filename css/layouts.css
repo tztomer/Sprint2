@@ -4,3 +4,8 @@
   max-width: calc(100% - 20px);
   margin: 0 auto;
 }
+
+footer {
+  height: 103px;
+  background-color: var(--orange);
+}

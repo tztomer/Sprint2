@@ -1,11 +1,9 @@
 "use strict";
 
-// add to
-
 function addListeners() {
   addMouseListeners();
   addTouchListeners();
-  // Resizes the canvas and renders it as window size changes
+
   window.addEventListener("resize", () => {
     resizeCanvas();
     renderMeme(gCurrImg);
@@ -37,9 +35,11 @@ function onDown(ev) {
     moveLine(diffX, diffY);
     renderMeme(gCurrImg);
     markLine(gMeme.lines[gMeme.selectedLineIdx]);
+
     document.querySelector(".canvas-container").style.cursor = "grabbing";
   } else {
     resetSelectedLine();
+
     renderMeme(gCurrImg);
   }
 }
@@ -59,20 +59,4 @@ function onMove(ev) {
 function onUp() {
   gIsClicked = false;
   document.querySelector(".canvas-container").style.cursor = "grab";
-}
-
-function getEvPos(ev) {
-  var pos = {
-    x: ev.offsetX,
-    y: ev.offsetY,
-  };
-  if (gTouchEvs.includes(ev.type)) {
-    ev.preventDefault();
-    ev = ev.changedTouches[0];
-    pos = {
-      x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-      y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
-    };
-  }
-  return pos;
 }

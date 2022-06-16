@@ -11,7 +11,7 @@
   }
 }
 @media (max-width: 500px) {
-  #nav-icon1 {
+  #hamburger-icon {
     display: block;
   }
   nav.main-nav {
@@ -39,5 +39,15 @@
   header {
     z-index: 4;
     width: 100%;
+  }
+}
+
+@media (max-width: 664px) {
+  .photo-editor-inner-wrapper {
+    flex-direction: column;
+    flex-direction: column;
+    justify-content: inherit;
+    align-items: center;
+    gap: 20px;
   }
 }

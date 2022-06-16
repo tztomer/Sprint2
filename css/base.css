@@ -26,10 +26,18 @@ button {
 }
 
 header,
-nav {
+nav,
+footer {
   font-family: "Montserrat", sans-serif;
 }
 
 ul {
   list-style-type: none;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
