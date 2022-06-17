@@ -6,7 +6,7 @@ const elHumbuggerMenu = document.querySelector("#hamburger-icon");
 console.log(elImagesContainer);
 
 const pages = ["gallery", "photo-editor", "saved"];
-// const pages = ["gallery", "photo-editor", "saved", "about", "about-info"];
+
 const gTouchEvs = ["touchstart", "touchmove", "touchend"];
 function init() {
   renderGallery();
@@ -48,9 +48,6 @@ function renderGallery() {
   elImagesContainer.innerHTML = imgHTML.join("");
 }
 
-// Paging
-
-// Selecting an image from the gallery
 function onSelectImage(id) {
   setSelectedImg(id);
   const currImg = getSelectedImg();

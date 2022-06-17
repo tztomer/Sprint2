@@ -122,21 +122,17 @@ function setTextAlignment(val) {
 }
 
 function changeStrokeColor(val) {
-  // if (!gMeme.selectedLineIdx >= 0) return
   gMeme.lines[gMeme.selectedLineIdx].strokeColor = val;
 }
 
 function changeFillColor(val) {
-  // if (!gMeme.selectedLineIdx >= 0) return
   gMeme.lines[gMeme.selectedLineIdx].fillColor = val;
 }
 
 function changeTextFont(val) {
-  // if (!gMeme.selectedLineIdx >= 0) return
   gMeme.lines[gMeme.selectedLineIdx].fontfamily = val;
 }
 
-// Makes the text line
 function makeLine(line) {
   gCtx.textBaseline = "middle";
   gCtx.textAlign = line.align;
@@ -148,7 +144,6 @@ function makeLine(line) {
   gCtx.strokeText(line.txt, line.pos.x, line.pos.y);
 }
 
-// Marks the text line while selected
 function markLine(line) {
   if (!line) return;
   const lineWidth = gCtx.measureText(line.txt).width + line.size;
@@ -156,8 +151,6 @@ function markLine(line) {
   gCtx.strokeStyle = "orange";
   gCtx.strokeRect(line.pos.x - lineWidth / 2 - 10, line.pos.y - lineHeight / 2, lineWidth + 20, lineHeight);
 }
-
-// Adds line to the center
 
 function addNewLine(txt = "JS Where everything is made up and the rules dont matter") {
   resetSelectedLine();
@@ -178,8 +171,6 @@ function addNewLine(txt = "JS Where everything is made up and the rules dont mat
   gMeme.selectedLineIdx = gMeme.lines.length - 1;
   markLine(gMeme.lines[gMeme.selectedLineIdx]);
 }
-
-// Deletes line
 
 function deleteLine() {
   const selectedLineIdx = gMeme.selectedLineIdx;

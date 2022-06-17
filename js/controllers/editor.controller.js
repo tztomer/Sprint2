@@ -4,9 +4,7 @@ let gCanvas;
 let gCtx;
 let gStartPos;
 
-// Editor initalization
 function initEditor(img) {
-  // resetSelectedLine()
   setSelectedLine(0);
   createCanvas();
   resizeCanvas();
@@ -16,7 +14,6 @@ function initEditor(img) {
   renderStickers();
 }
 
-// Creates canvas and access to its context
 function createCanvas() {
   gCanvas = document.querySelector("#meme-canvas");
   gCtx = gCanvas.getContext("2d");
@@ -34,11 +31,10 @@ function initLinePositions() {
   };
 }
 
-// Adds Listeners
 function addListeners() {
   addMouseListeners();
   addTouchListeners();
-  // Resizes the canvas and renders it as window size changes
+
   window.addEventListener("resize", () => {
     resizeCanvas();
     renderMeme(gCurrImg);
@@ -58,8 +54,6 @@ function addTouchListeners() {
 }
 
 function onDown(ev) {
-  // ev.preventDefault();
-  // ev.stopPropagation();
   const pos = getEvPos(ev);
   const isClicked = isLineClicked(pos);
   const lines = getGMeme().lines;
@@ -112,14 +106,11 @@ function renderMeme(img) {
   markLine(gMeme.lines[gMeme.selectedLineIdx]);
 }
 
-// Resizes canvas
 function resizeCanvas() {
   const elContainer = document.querySelector(".canvas-container");
   gCanvas.width = elContainer.offsetWidth;
   gCanvas.height = elContainer.offsetHeight;
 }
-
-// Renders text input from text box
 
 function pushChooseTxt(text) {
   document.getElementsByName("replace text")[0].placeholder = text;
@@ -192,16 +183,6 @@ function onSave() {
   renderSaved();
   moveToPage("saved");
 }
-
-// Renders stickers
-
-// function renderStickers() {
-//   const stickers = getStickers();
-//   const strHTMLs = stickers.map(sticker => {
-//     return `<button class="sticker" onclick="onChooseSticker('${sticker}')">${sticker}</button>`;
-//   });
-//   document.querySelector(".stickers-container").innerHTML = strHTMLs.join("");
-// }
 
 function onChooseSticker(sticker) {
   addNewLine(sticker);

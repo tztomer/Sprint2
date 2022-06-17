@@ -1,15 +1,11 @@
 "use strict";
 
-// Removes meme from local storage
-
 function removeMemeFromStorage(idx) {
   const savedMemes = getSavedMemes();
   savedMemes.splice(idx, 1);
   saveToStorage(DB_KEY, savedMemes);
   renderSaved();
 }
-
-// Renders saved memes
 
 function renderSaved() {
   const savedMemes = getSavedMemes();
