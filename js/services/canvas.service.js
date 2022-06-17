@@ -31,26 +31,15 @@ function resetSelectedLine() {
     gMeme.lines[idx].isSelected = false;
   });
   gMeme.selectedLineIdx = -1;
+  return gMeme.lines;
 }
 
 function setTextSize(val) {
   gMeme.lines[gMeme.selectedLineIdx].size += val;
 }
 
-// point!!!!!!!!!
-// function setTextAlignment(val) {
-//   gMeme.lines[gMeme.selectedLineIdx].align = val;
-// }
-
 function setTextAlignment(val) {
-  const line = gMeme.lines[gMeme.selectedLineIdx];
-  if (val === "end") {
-    line.pos.x = gCanvas.width - gCanvas.width / 3;
-  } else if (val === "start") {
-    line.pos.x = gCanvas.width / 3;
-  } else if (val === "center") {
-    line.pos.x = gCanvas.width / 2;
-  }
+  gMeme.lines[gMeme.selectedLineIdx].align = val;
 }
 
 function changeStrokeColor(val) {

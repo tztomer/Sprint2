@@ -11,6 +11,10 @@
   justify-content: center;
 }
 
+.canvas-container {
+  width: 500px;
+  height: 500px;
+}
 .saved-container img {
   width: 150px;
   height: 120px;
@@ -24,18 +28,18 @@
   height: 100%;
 }
 
-canvas#meme-canvas {
+/* canvas#meme-canvas {
   border-radius: 6px;
   width: 100%;
   height: 100%;
-}
+} */
 
-.canvas-container {
+/* .canvas-container {
   width: 575px;
   height: 570px;
 
   cursor: grab;
-}
+} */
 
 .photo-editor {
   padding: 13px 0px;

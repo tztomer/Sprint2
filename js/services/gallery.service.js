@@ -1,4 +1,3 @@
-"use strict";
 let gFilterBy;
 let gKeywordSearchCountMap = {
   funny: 12,
@@ -8,7 +7,7 @@ let gKeywordSearchCountMap = {
   men: 4,
   kids: 10,
 };
-const gImgs = [
+let gImgs = [
   {
     id: 1,
     url: `images/1.jpg`,
@@ -100,19 +99,7 @@ const gImgs = [
     keywords: ["funny", "men", "celebrity"],
   },
 ];
-function setFilterImgs(val) {
-  gFilterBy = val === "all" ? "" : val.toLowerCase();
-}
 
-function getKeywords() {
-  return gKeywordSearchCountMap;
-}
-
-function sizeUpKeyword(word) {
-  if (gKeywordSearchCountMap[word] >= 28) return;
-  // console.log(gKeywordSearchCountMap[word]++);
-  gKeywordSearchCountMap[word]++;
-}
 function getImages() {
   if (gFilterBy) {
     let filteredImgs = [];
@@ -123,8 +110,31 @@ function getImages() {
         }
       });
     });
-    console.log(filteredImgs);
     return filteredImgs;
   }
   return gImgs;
+}
+
+function setFilterImgs(val) {
+  gFilterBy = val === "all" ? "" : val.toLowerCase();
+}
+
+function loadImageFromInput(ev, onImageReady) {
+  let reader = new FileReader();
+
+  reader.onload = event => {
+    let img = new Image();
+    img.onload = onImageReady.bind(null, img);
+    img.src = event.target.result;
+    gCurrImg = img;
+  };
+  reader.readAsDataURL(ev.target.files[0]);
+}
+
+function getKeywords() {
+  return gKeywordSearchCountMap;
+}
+
+function sizeUpKeyword(word) {
+  gKeywordSearchCountMap[word]++;
 }

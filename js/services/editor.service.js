@@ -1,7 +1,8 @@
 "use strict";
-const DB = "savedDB";
 
-let gStickers = ["😂", "😴", "🤡", "💩", "😡", "🤬"];
+const DB_KEY = "savedMemesDB";
+
+let gStickers = ["🤬", "🥶", "🫥", "💩", "👺", "👾", "🧑🏻‍🚀", "⚾️", "🥡", "🦄", "🦐", "🌘", "🌈", "☄️"];
 
 let gMeme = {
   selectedImgId: 1,
@@ -12,12 +13,12 @@ let gMeme = {
         x: 0,
         y: 0,
       },
-      txt: "Not sure if im good at programming or good at googling",
+      txt: "One does not simply write js",
       size: 20,
       align: "center",
       fillColor: "white",
       strokeColor: "black",
-      isSelected: false,
+      isSelected: true,
       fontfamily: "impact",
     },
     {
@@ -25,7 +26,7 @@ let gMeme = {
         x: 0,
         y: 0,
       },
-      txt: "One does not simply write js",
+      txt: "May the force be with you",
       size: 20,
       align: "center",
       fillColor: "white",
@@ -57,7 +58,6 @@ function moveLine(diffX, diffY) {
 function isLineClicked(clickedPos) {
   const clickedLine = gMeme.lines.find(line => {
     if (Math.sqrt((clickedPos.x - line.pos.x) ** 2 + (clickedPos.y - line.pos.y) ** 2) <= gCtx.measureText(line.txt).width / 2) {
-      console.log("line", line);
       return line;
     }
   });
@@ -67,6 +67,7 @@ function isLineClicked(clickedPos) {
 
 function setLineText(text) {
   gMeme.lines[gMeme.selectedLineIdx].txt = text;
+  return gMeme.lines[gMeme.selectedLineIdx].txt;
 }
 
 function getSelectedLine() {
@@ -104,10 +105,12 @@ function resetSelectedLine() {
 }
 
 function setTextSize(val) {
+  // if (!gMeme.selectedLineIdx >= 0) return
   gMeme.lines[gMeme.selectedLineIdx].size += val;
 }
 
 function setTextAlignment(val) {
+  // if (!gMeme.selectedLineIdx >= 0) return
   const line = gMeme.lines[gMeme.selectedLineIdx];
   if (val === "end") {
     line.pos.x = gCanvas.width - gCanvas.width / 3;
@@ -130,7 +133,7 @@ function changeFillColor(val) {
 
 function changeTextFont(val) {
   // if (!gMeme.selectedLineIdx >= 0) return
-  gMeme.lines[gMeme.selectedLineIdx].fontfamily = `${val}, sans-serif `;
+  gMeme.lines[gMeme.selectedLineIdx].fontfamily = val;
 }
 
 // Makes the text line
@@ -149,16 +152,18 @@ function makeLine(line) {
 function markLine(line) {
   if (!line) return;
   const lineWidth = gCtx.measureText(line.txt).width + line.size;
-  const lineHeight = line.size + 30;
+  const lineHeight = line.size + 20;
   gCtx.strokeStyle = "orange";
-  gCtx.strokeRect(line.pos.x - lineWidth / 2 - 20, line.pos.y - lineHeight / 2, lineWidth + 20, lineHeight);
+  gCtx.strokeRect(line.pos.x - lineWidth / 2 - 10, line.pos.y - lineHeight / 2, lineWidth + 20, lineHeight);
 }
 
-function addNewLine(txt = "Write hello world , add to cv 7 years experienced") {
+// Adds line to the center
+
+function addNewLine(txt = "JS Where everything is made up and the rules dont matter") {
   resetSelectedLine();
   const line = {
     txt: txt,
-    size: 40,
+    size: 20,
     align: "center",
     fillColor: "white",
     strokeColor: "black",
@@ -174,6 +179,8 @@ function addNewLine(txt = "Write hello world , add to cv 7 years experienced") {
   markLine(gMeme.lines[gMeme.selectedLineIdx]);
 }
 
+// Deletes line
+
 function deleteLine() {
   const selectedLineIdx = gMeme.selectedLineIdx;
   if (selectedLineIdx >= 0) {
@@ -187,18 +194,18 @@ function deleteLine() {
 }
 
 function saveMemeToStorage(meme) {
-  let savedMemes = loadFromStorage(DB);
+  let savedMemes = loadFromStorage(DB_KEY);
   if (!savedMemes || savedMemes === null) {
     savedMemes = [meme];
-    saveToStorage(DB, savedMemes);
+    saveToStorage(DB_KEY, savedMemes);
     return;
   }
   savedMemes.push(meme);
-  saveToStorage(DB, savedMemes);
+  saveToStorage(DB_KEY, savedMemes);
 }
 
 function getSavedMemes() {
-  return loadFromStorage(DB);
+  return loadFromStorage(DB_KEY);
 }
 
 function getStickers() {

@@ -5,7 +5,7 @@
 function removeMemeFromStorage(idx) {
   const savedMemes = getSavedMemes();
   savedMemes.splice(idx, 1);
-  saveToStorage(DB, savedMemes);
+  saveToStorage(DB_KEY, savedMemes);
   renderSaved();
 }
 
